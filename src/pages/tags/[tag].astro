@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import ProjectProject from "../../components/ProjectProject.astro";
+import ProjectPost from "../../components/ProjectPost.astro";
 
 export async function getStaticPaths() {
   const allProjects = await getCollection("projects");
@@ -25,6 +25,6 @@ const { projects } = Astro.props;
 <BaseLayout pageTitle={tag}>
     <p>Projects tagged with {tag}</p>
     <ul>
-        { projects.map((project) => <BlogProject url={`/projects/${project.slug}/`} title={project.data.title} />) }
+        { projects.map((project) => <ProjectPost url={`/projects/${project.slug}/`} title={project.data.title} />) }
     </ul>
 </BaseLayout>
