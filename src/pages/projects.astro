@@ -1,9 +1,11 @@
 ---
+import { getCollection } from "astro:content";
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 import ProjectPost from '../components/ProjectPost.astro';
 
-const allProjects = await Astro.glob('../pages/projects/*.md');
+// const allProjects = await Astro.glob('../pages/projects/*.md');
+const allProjects = await getCollection("projects");
 
 const pageTitle = "Projects";
 ---
@@ -15,7 +17,9 @@ const pageTitle = "Projects";
 		<p>This is where I will post about my journey learning Astro.</p>
 
 		<ul>
-			{allProjects.map((project) => <ProjectPost url={project.url} title={project.frontmatter.title} />)}
+			{allProjects.map((project) => 
+			// <ProjectPost url={project.url} title={project.frontmatter.title} />
+			<ProjectPost url={`/projects/${project.slug}/`} title={project.data.title} />)}
 		</ul>
 
 </BaseLayout>
