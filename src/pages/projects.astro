@@ -1,5 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+import ProjectPost from '../components/ProjectPost.astro';
+
+const allProjects = await Astro.glob('../pages/projects/*.md');
+
 const pageTitle = "Projects";
 ---
 
@@ -10,9 +15,7 @@ const pageTitle = "Projects";
 		<p>This is where I will post about my journey learning Astro.</p>
 
 		<ul>
-			<li><a href="/projects/project-1/">Post 1</a></li>
-			<li><a href="/projects/project-2/">Post 2</a></li>
-			<li><a href="/projects/project-3/">Post 3</a></li>
+			{allProjects.map((project) => <ProjectPost url={project.url} title={project.frontmatter.title} />)}
 		</ul>
 
 </BaseLayout>

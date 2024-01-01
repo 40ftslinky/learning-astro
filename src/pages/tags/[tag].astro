@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectPost from '../../components/ProjectPost.astro';
+
+// getStaticProps() is a function that returns an array of page routes
+// If you need information to construct the page routes, write it inside getStaticPaths().
+export async function getStaticPaths() {
+
+    // Use the Astro.glob() call to receive information about all projects .md files to pass to each page route.
+    
+    const allProjects = await Astro.glob('../projects/*.md');
+
+    // Go through each Markdown post, one by one, and combine each array of tags into one single larger array. 
+    // Then, make a new Set from all the individual tags it found (to ignore repeated values). 
+    // a list of every tag used in project posts.
+    const uniqueTags = [...new Set(allProjects.map((project) => project.frontmatter.tags).flat())];
+
+    // generate this list of objects automatically using uniqueTags array to define each parameter.
+    return uniqueTags.map((tag) => {
+        const filteredProjects = allProjects.filter((project) => project.frontmatter.tags.includes(tag));
+
+        // turn that set into an array (with no duplications), that you can use to show a list of tags on your page.
+        // return a list of objects containing params (what to call each page route) 
+        // and optionally any props (data that you want to pass to those pages).
+        return {
+            params: { tag },
+            props: { projects: filteredProjects },
+        };
+    });
+}
+
+// To receive information in the HTML template of a page route, write it outside getStaticPaths().
+const { tag } = Astro.params;
+const { projects } = Astro.props;
+
+---
+<BaseLayout pageTitle={tag}>
+  <p>Projects tagged with {tag}</p>
+  <ul>
+    <!-- list of all log posts is filtered before it is sent to each page as props -->
+    <!-- received values of props and params -->
+    {projects.map((project) => <ProjectPost url={project.url} title={project.frontmatter.title}/>)}
+
+  </ul>
+</BaseLayout>
