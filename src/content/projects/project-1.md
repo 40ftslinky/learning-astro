@@ -1,14 +1,29 @@
 ---
 
+uniqueID: 'post'
 title: 'My First Blog Post'
 pubDate: 2023-12-30
+# publishDate: 2019-12-01 00:00:00
+head: 'My First Blog Post'
 description: 'This is the first post of my new Astro projects.'
 author: 'Astro Learner'
 image:
-    url: 'https://docs.astro.build/assets/full-logo-light.png'
+    # url: 'https://docs.astro.build/assets/full-logo-light.png'
+    url: '/src/assets/color-green.jpg'
     alt: 'The full Astro logo.'
+    width: '100%'
+    height: '100%'
+
 tags: ["astro", "blogging", "learning in public"]
+
+# contentImgs: [
+#     "/src/assets/project-1/Editorial-Mockup_00.jpg",
+#     "/src/assets/project-1/Editorial-Mockup_01.jpg"    
+# ]
 ---
+
+import { Image } from 'astro:assets';
+import rocket from '../assets/rocket.png';
 
 Welcome to my _new blog_ about learning Astro! Here, I will share my learning journey as I build a new website.
 

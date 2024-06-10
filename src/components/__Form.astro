@@ -1,0 +1,89 @@
+---
+
+// Frontmatter section
+// Component scripts goes here.
+
+// import { isRegistered, registerUser } from "../../data/users"
+// import { isValidEmail } from "../../utils/isValidEmail";
+
+const errors = { username: "", email: "", password: "", message: "", terms: "" };
+
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    const name = data.get("username");
+    const email = data.get("email");
+    const password = data.get("password");
+    const message = data.get("message");
+    const terms = data.get("terms");
+
+
+    if (typeof name !== "string" || name.length < 1) {
+      errors.username += "Please enter a username. ";
+    }
+    if (typeof email !== "string" || !isValidEmail(email)) {
+      errors.email += "Email is not valid. ";
+    } else if (await isRegistered(email)) {
+      errors.email += "Email is already registered. ";
+    }
+    if (typeof password !== "string" || password.length < 6) {
+      errors.password += "Password must be at least 6 characters. ";
+    }
+    if (typeof message !== "string" || password.length > 200) {
+      errors.password += "Message must be less than 200 characters. ";
+    }
+    if (typeof checkbox !== TRUE) {
+      errors.checkbox += "Checkbox must be checked. ";
+    }
+    const hasErrors = Object.values(errors).some(msg => msg)
+    if (!hasErrors) {
+      await registerUser({name, email, password, message, terms});
+      return Astro.redirect("/login");
+    }
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+}
+
+
+import '../styles/forms.css';
+
+---
+
+<form method="POST">
+    <label>
+        <span>Username:</span>
+      <input type="text" name="username" required />
+    </label>
+    {errors.username && <p>{errors.username}</p>}
+
+    <label>
+        <span>Email:</span>
+      <input type="email" name="email" required />
+    </label>
+    {errors.email && <p>{errors.email}</p>}
+
+    <label>
+        <span>Password:</span>
+      <input type="password" name="password" required minlength="6" />
+    </label>
+    {errors.password && <p>{errors.password}</p>}
+
+    <label>
+        <span>Messsage:</span>
+        <input type="textarea" name="message" />
+    </label>
+    {errors.message && <p>{errors.message}</p>}
+
+    <div class="field">
+        <div class="checkbox">
+            <input type="checkbox" checked name="terms" tabindex="0" >
+            <label>I agree to the <a href="#tscs">Terms and Conditions</a></label>
+        </div>
+        {errors.terms && <p>{errors.terms}</p>}
+    </div>
+
+    <button class="">Submit</button>
+  </form>

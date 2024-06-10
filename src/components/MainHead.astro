@@ -1,0 +1,64 @@
+---
+
+import '../styles/global.css';
+import '../styles/animations.css';
+
+interface Props {
+	title?: string | undefined;
+	description?: string | undefined;
+}
+
+const {
+	title = '40ftSlinky: Creative Agency',
+	description = '40ftSlinky is a boutique creative agency delivering imaginative and effective brand & strategy with digital, print & motion solutions.',
+} = Astro.props;
+
+// const { pageTitle, metaTitle, metaDescription } = Astro.props;
+
+
+---
+
+<!-- <meta charset="utf-8" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+<meta charset="UTF-8" />
+<meta name="description" property="og:description" content={description} />
+<meta name="viewport" content="width=device-width" />
+<meta name="generator" content={Astro.generator} />
+
+<title>{title}</title>
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700;800;900&display=swap" rel="stylesheet"> -->
+
+<!--  -->
+
+<!-- Primary Meta Tags -->
+<meta charset="utf-8" />
+<meta name="generator" content={Astro.generator} />
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+
+<title>{title}</title>
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital@0;1&display=swap" rel="stylesheet">
+
+<!-- <Seo title={title} description={description} /> -->
+
+<!-- <ViewTransitions /> -->
+
+<!--  -->
+<script is:inline>
+	// This code is inlined in the head to it instant & blocking.
+	
+</script>
+
+<!-- relative path to script at `src/scripts/local.js` -->
+<script src="../scripts/scroll.js"></script>

@@ -1,0 +1,62 @@
+---
+
+import { useState } from "preact/hooks";
+
+export default function Form() {
+  const [responseMessage, setResponseMessage] = useState("");
+
+  async function submit(e: SubmitEvent) {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    const response = await fetch("/api/feedback", {
+      method: "POST",
+      body: formData,
+    });
+    const data = await response.json();
+    if (data.message) {
+      setResponseMessage(data.message);
+    }
+  }
+}
+
+import '../styles/forms.css';
+
+---
+
+<form onSubmit={submit}>
+    <label>
+        <span>Username:</span>
+      <input type="text" name="username" required />
+    </label>
+    {errors.username && <p>{errors.username}</p>}
+
+    <label>
+        <span>Email:</span>
+      <input type="email" name="email" required />
+    </label>
+    {errors.email && <p>{errors.email}</p>}
+
+    <label>
+        <span>Password:</span>
+      <input type="password" name="password" required minlength="6" />
+    </label>
+    {errors.password && <p>{errors.password}</p>}
+
+    <label>
+        <span>Messsage:</span>
+        <input type="textarea" name="message" />
+    </label>
+    {errors.message && <p>{errors.message}</p>}
+
+    <div class="field">
+        <div class="checkbox">
+            <input type="checkbox" checked name="terms" tabindex="0" >
+            <label>I agree to the <a href="#tscs">Terms and Conditions</a></label>
+        </div>
+        {errors.terms && <p>{errors.terms}</p>}
+    </div>
+
+    <button class="">Submit</button>
+    {responseMessage && <p>{responseMessage}</p>}
+    
+  </form>

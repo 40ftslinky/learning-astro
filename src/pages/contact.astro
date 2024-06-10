@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Form from '../components/Form.astro';
+
+import FeedbackForm from "../components/FeedbackForm"
+
+const uniqueID = "contact";
+const pageTitle = "Contact";
+const metaTitle = "Contact meta title tbc";
+const metaDescription = "Contact meta description tbc";
+const pageHead = "Contact Us";
+const pageDesc = "Contact page description tbc";
+const pageContent = "Contact page content tbc";
+
+
+---
+
+<BaseLayout
+	uniqueID={uniqueID}
+	pageTitle={pageTitle} 
+	metaTitle={metaTitle} 
+	metaDescription={metaDescription} 
+	pageHead={pageHead} 
+	pageDesc={pageDesc}
+	pageContent={pageContent}
+>
+    <section>
+        <h2>Subtitle</h2>
+        <p>Put a form here</p>    
+
+        <!-- <Form /> -->
+
+        <FeedbackForm client:load />
+      
+    </section>
+
+
+</BaseLayout>

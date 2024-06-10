@@ -1,92 +1,169 @@
+
+:root {
+  --nav-height: 5rem;    
+
+  --spacing: 0.25rem;
+  --radius: 0.25rem;
+  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  --max-width: 1170px;
+  --fixed-width: 620px;
+  --transition: all 0.3s linear;
+  --link: #ff9776;
+  --link-hover: #ff9776;
+
+  /* modals */
+  
+  --modal-background: rgba(0, 0, 0, 0.5);
+  --modal-background-alt: rgba(255, 255, 255, 0.5);
+  --modal-color: #ff9776;
+  --modal-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  --modal-radius: 0.25rem;
+  --modal-width: 30rem;
+  --modal-max-width: 90vw;
+  --modal-transition: all 0.3s linear;
+  --modal-padding: 1rem;
+  --modal-border: 1px solid #ff9776;
+  --modal-border-alt: 1px solid #ff9776;
+  --modal-border-radius: 0.25rem;
+  --modal-border-radius-alt: 0.25rem;
+  --modal-border-width: 1px;
+  --modal-border-width-alt: 1px;
+  --modal-border-color: #ff9776;
+
+  /* sizes */
+
+  --logosizew: 200px;
+  --logosizeh: 60px;
+  --socialsizew: 30px;
+  --socialsizeh: 30px;
+
+  /* spacing */
+  --bodypadding:2rem;
+  --sectionpadding:5vw;
+}
+
+/* Global variables */
+:root {
+  /* Transitions */
+  --theme-transition: 0.2s ease-in-out;
+}
+
+
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
 html {
-    background-color: #f1f5f9;
+    background-color: var(--gray-900) /* #f1f5f9 */;
     font-family: sans-serif;
   }
 html.dark {
     background-color: #0d0950;
     color: #fff;
 }
+
+body {
+  /* background-color: var(--gray-999); */
+  color: var(--gray-100);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+section {
+  /* padding: 2rem 0; */
+}
+
+/* Utilities */
+
+.sr, .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 83rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+}
   
+
+
 .dark .nav-links a {
     color: #fff;
 }
   
-  body {
+body {
     margin: 0 auto;
     width: 100%;
-    max-width: 80ch;
-    padding: 1rem;
+    /* max-width: 80ch; */
+    /* padding: 1rem; */
+    padding-top: var(--nav-height);
     line-height: 1.5;
-  }
+}
+
+img {
+    /* max-width: calc(100vw - 4rem); */
+    max-width: calc(100vw - 2*var(--bodypadding));
+}
   
-  * {
+* {
     box-sizing: border-box;
-  }
+}
   
-  h1 {
-    margin: 1rem 0;
-    font-size: 2.5rem;
-  }
-  
-  /* nav styles */
 
-  .hamburger {
-    padding-right: 20px;
-    cursor: pointer;
-  }
-  
-  .hamburger .line {
-    display: block;
-    width: 40px;
-    height: 5px;
-    margin-bottom: 10px;
-    background-color: #ff9776;
-  }
-  
-  .nav-links {
-    width: 100%;
-    top: 5rem;
-    left: 48px;
-    background-color: #ff9776;
-    display: none;
-    margin: 0;
-  }
-  
-  .nav-links a {
-    display: block;
-    text-align: center;
-    padding: 10px 0;
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-  
-  .nav-links a:hover,
-  .nav-links a:focus {
-    background-color: #ff9776;
-  }
-  
-  .expanded {
-    display: unset;
-  }
-  
-  @media screen and (min-width: 636px) {
-    .nav-links {
-      margin-left: 5em;
-      display: block;
-      position: static;
-      width: auto;
-      background: none;
-    }
-  
-    .nav-links a {
-      display: inline-block;
-      padding: 15px 20px;
-    }
+/* STRUCTURE */
 
-    .hamburger {
-        display: none;
-    }
-  
-  }
+.main-content {
+    /*  */
+    min-height: calc(100vh - (var(--nav_hght) + var(--footer_hght)));
+}
+
+.main-content {
+  background: rgba(127, 59, 236, 0.1);
+  transition: var(--transition);
+}
+.active ~ .main-content {
+  background: rgba(127, 59, 236, 0);
+  transition: var(--transition);
+}
+
+section {
+    /* padding: 2rem; */
+    padding: var(--sectionpadding) var(--bodypadding) 
+}
+section.hero {
+    min-height: 60vh;
+}
+
+.gallery {
+    grid-area: gallery;
+}

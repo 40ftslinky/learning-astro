@@ -1,12 +1,75 @@
 ---
+
+import { getCollection } from 'astro:content';
+
+// Layout import — provides basic page elements: <head>, <nav>, <footer> etc.
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Greeting from '../components/Greeting.jsx';
 
-const pageTitle = "Home Page";
+// Component Imports
+// import CallToAction from '../components/CallToAction.astro';
+import Grid from '../components/Grid.astro';
+// import Hero from '../components/Hero.astro';
+// import Icon from '../components/Icon.astro';
+// import Pill from '../components/Pill.astro';
+import PortfolioPreview from '../components/PortfolioPreview.astro';
+
+// Page section components
+// import ContactCTA from '../components/ContactCTA.astro';
+// import Skills from '../components/Skills.astro';
+
+import ImageCard from '../components/ImageCard.astro';
+
+const uniqueID = "home";
+const pageTitle = "40ftSlinky - Creative Agency";
+const metaTitle = "meta title tbc";
+const metaDescription = "meta description tbc";
+const pageHead = "Get your business to where you need it to be.";
+const pageDesc = "40ftSlinky is a boutique creative agency delivering imaginative and effective brand & strategy with digital, print & motion solutions.";
+const pageContent = "Lorem Ipsum";
+
+// Content Fetching: List four most recent work projects
+const projects = (await getCollection('projects'))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 4);
+
 ---
-<BaseLayout pageTitle={pageTitle}>
-	<h2>My awesome blog subtitle</h2>
-	<p>Lorem Ipsum</p>
 
-	<Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
+<BaseLayout
+	uniqueID={uniqueID}
+	pageTitle={pageTitle} 
+	metaTitle={metaTitle} 
+	metaDescription={metaDescription} 
+	pageHead={pageHead}
+	pageDesc={pageDesc}
+	pageContent={pageContent}
+>
+	<!-- <section>
+		<h2>40ftSlinky is a boutique creative agency delivering imaginative and effective brand & strategy with digital, print & motion solutions.</h2>
+		<p>Lorem Ipsum</p>
+	</section> -->
+
+	<section>
+		<ImageCard
+			imagePath="/src/assets/color-gray.jpg"
+			altText="A grey colour swatch"
+			name="Grey"
+			size="300x500"
+		/>
+	</section>
+
+	<!-- storyblok -->
+	<!-- <StoryblokComponent blok={content} /> -->
+	<section>
+		<div class="gallery">
+			<Grid variant="offset">
+				{
+					projects.map((project) => (
+						<li>
+							<PortfolioPreview project={project} />
+						</li>
+					))
+				}
+			</Grid>
+		</div>
+	</section>
 </BaseLayout>

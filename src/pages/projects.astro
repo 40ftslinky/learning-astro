@@ -1,25 +1,68 @@
 ---
+// import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
+
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-import ProjectPost from '../components/ProjectPost.astro';
+// Component Imports
+// import CallToAction from '../components/CallToAction.astro';
+import Grid from '../components/Grid.astro';
+import PortfolioPreview from '../components/PortfolioPreview.astro';
 
-// const allProjects = await Astro.glob('../pages/projects/*.md');
 const allProjects = await getCollection("projects");
 
+const uniqueID = "projects";
 const pageTitle = "Projects";
+const metaTitle = "Projects meta Title tbc";
+const metaDescription = "Projects page meta description tbc";
+const pageHead = "Projects Heading";
+const pageDesc = "Projects page description tbc";
+const pageContent = "Projects page content tbc";
+// const pageImage = "/images/og-image.jpg";
+
+
+// Content Fetching: List four most recent work projects
+const projects = (await getCollection('projects'))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 4);
+
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout
+	uniqueID={uniqueID} 
+	pageTitle={pageTitle} 
+	metaTitle={metaTitle} 
+	metaDescription={metaDescription}
+	pageHead={pageHead}
+	pageDesc={pageDesc}
+	pageContent={pageContent}
+>
+	<section>
 
 		<h2>... and my new Astro site!</h2>
 
 		<p>This is where I will post about my journey learning Astro.</p>
 
-		<ul>
+		<!-- <ul>
 			{allProjects.map((project) => 
 			// <ProjectPost url={project.url} title={project.frontmatter.title} />
 			<ProjectPost url={`/projects/${project.slug}/`} title={project.data.title} />)}
-		</ul>
+		</ul> -->
+	</section>
+
+	<section>
+		<div class="gallery">
+			<Grid variant="offset">
+				{
+					projects.map((project) => (
+						<li>
+							<PortfolioPreview project={project} />
+						</li>
+					))
+				}
+			</Grid>
+		</div>
+	</section>
+	<!-- {/* <CallToAction /> */}	 -->
 
 </BaseLayout>

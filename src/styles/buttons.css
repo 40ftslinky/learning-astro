@@ -1,0 +1,46 @@
+*, :after, :before {
+    box-sizing: inherit;
+    -webkit-backface-visibility: inherit;
+    backface-visibility: inherit;
+}
+
+.button-pill_container {
+    position: relative;
+    display: inline-flex;
+    overflow: hidden;
+    align-items: center;
+    padding: .2rem 3rem 0;
+    border: .1rem solid;
+    border-radius: 1.6rem;
+    color: currentcolor;
+    font-size: 1.2rem;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: -.02em;
+    line-height: 2.8rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    transform: translateZ(0);
+    transition: border-color var(--bd-time-transition-650) var(--ease-out), color var(--bd-time-transition-250) var(--ease-out);
+    white-space: nowrap;
+}
+
+.button-pill_container:not(:disabled):focus-visible, 
+.button-pill_container:not(:disabled):hover {
+    color: var(--background-color);
+    outline: 0;
+}
+
+.button-pill_container:before {
+    position: absolute;
+    z-index: var(--bd-layout-z-index-z-neg-1);
+    bottom: -.1rem;
+    left: 0;
+    width: 100%;
+    height: calc(100% + .2rem);
+    background-color: var(--text-color);
+    color: var(--background-color);
+    content: "";
+    transform: translate3d(0, 100%, 0);
+    transition: transform var(--bd-time-transition-250) var(--ease-out);
+}
+

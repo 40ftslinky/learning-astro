@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const uniqueID = "404";
+const pageTitle = "404 - Page not Found";
+const metaTitle = "meta title tbc";
+const metaDescription = "meta description tbc";
+const pageHead = "404";
+const pageDesc = "Page not Found";
+const pageContent = "Somethings missing";
+
+---
+
+<BaseLayout
+	uniqueID={uniqueID}
+	pageTitle={pageTitle} 
+	metaTitle={metaTitle} 
+	metaDescription={metaDescription} 
+	pageHead={pageHead} 
+	pageDesc={pageDesc}
+	pageContent={pageContent}
+>
+	<section>
+		<h2>Woops</h2>
+		<p>Not sure you meant to be here</p>
+		<p>Try <a href="/">starting again</a></p>
+	</section>
+
+</BaseLayout>

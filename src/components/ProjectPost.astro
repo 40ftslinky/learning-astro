@@ -1,5 +1,12 @@
 ---
+import { Image } from "astro:assets";
+
 const { title, url } = Astro.props;
 ---
 
-<li class="project-list"><a href={url}>{title}</a></li>
+<li class="project-list">
+    <a href={url}>
+        <!-- <Image src={project.data.image.url} width={project.data.width} height={project.data.height} alt={project.data.coverAlt} /> -->
+        {title}
+    </a>
+</li>

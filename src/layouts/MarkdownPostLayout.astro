@@ -1,21 +1,73 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import { fade } from "astro:transitions";
+// import { image } from "astro:image";
+
+import { Image } from "astro:assets";
+
+const { imgSrc } = Astro.props;
+// const images = import.meta.glob("../assets/*");
+// import.meta.glob() returns a map of a file’s path to its content, while Astro.glob() returns a list of content.
+
 const { frontmatter } = Astro.props;
 
 ---
-<BaseLayout pageTitle={frontmatter.title}>
-    <p>{frontmatter.pubDate.toString().slice(0,10)}</p>
-    <p><em>{frontmatter.description}</em></p>
-    <p>Written by: {frontmatter.author}</p>
-    <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+<BaseLayout 
+    uniqueID={frontmatter.uniqueID}
+    pageTitle={frontmatter.title} 
+    metaTitle={frontmatter.metaTitle} 
+    metaDescription={frontmatter.metaDescription}
+    pageHead={frontmatter.head}
+    pageDesc={frontmatter.description}
+	pageContent={frontmatter.content}
+>
 
-    <div class="tags">
-        {frontmatter.tags.map((tag) => (
-            <p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p>
-        ))}
-    </div>
+    <section class="content frontmatter">        
 
-    <slot />
+        <p>{frontmatter.pubDate.toString().slice(0,10)}</p>
+        <p transition:animate={fade({ duration: '2s' })} ><em>{frontmatter.description}</em></p>
+        <p>Written by: {frontmatter.author}</p>
+    
+    <!-- <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} /> -->
+    <!-- <Image class="cover_image" src={frontmatter.image.url} width={frontmatter.image.width} height={frontmatter.image.height} alt={frontmatter.image.alt} />    -->
+    
+        <div class="tags">
+            {
+                frontmatter.tags.map((tag) => (
+                    <p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p>
+                ))
+            }
+        </div>
+
+    </section>
+
+    
+
+    
+    <!-- <section id="gallery">
+        {
+          frontmatter.contentImgs.map((contentImg) => (
+            <div class="content_img-wrap">
+                <img 
+                    class="content_img" 
+                    src={frontmatter.contentImgs.src} 
+                    // src={`${src}`}
+                    width={frontmatter.contentImgs.width} 
+                    height={frontmatter.contentImgs.height} 
+                    alt={frontmatter.contentImgs.alt}
+                />                
+            </div>
+          ))
+        }
+    </section>  -->
+    <!-- <img class="content_img" src={`${contentImg}`} alt='alt' /> -->
+    <!-- <Image class="content_img" src={`${url}`} width={width} height={height} alt={alt} /> -->
+
+    <section class="content">
+        
+        <slot />
+
+    </section>
 
 </BaseLayout>
 

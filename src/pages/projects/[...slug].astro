@@ -1,4 +1,7 @@
 ---
+import { ViewTransitions } from "astro:transitions";
+import { fade } from "astro:transitions";
+
 import { getCollection } from 'astro:content';
 import MarkdownPostLayout from '../../layouts/MarkdownPostLayout.astro';
 
@@ -11,8 +14,8 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
----
 
+---
 <MarkdownPostLayout frontmatter={entry.data}>
-    <Content />
+  <Content />
 </MarkdownPostLayout>
