@@ -1,0 +1,22 @@
+---
+import '../styles/buttons.css';
+
+export interface Props {
+  class?: string;
+  style?: string;
+  href?: string;
+}
+
+// const visible = true;
+
+const { class: className, href: url } = Astro.props;
+
+---
+
+<a href={url} class:list={["btn", className]} ><slot /></a>
+
+<style>
+  .btn {
+    text-decoration: none;
+  }
+</style>

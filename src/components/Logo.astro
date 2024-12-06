@@ -7,6 +7,10 @@ export interface Props {
 	color?: string;
 	gradient?: boolean;
 	size?: string;
+	class?: string;
+	width?: string;
+	height?: string;
+	viewBox?: string;
 }
 
 const { class: className, width: logoWidth, height: logoHeight, viewBox: viewBoxSize, ...rest } = Astro.props;

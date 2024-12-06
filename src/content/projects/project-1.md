@@ -14,12 +14,24 @@ image:
     width: '100%'
     height: '100%'
 
+video: 
+    url: '/video/studio-dumbar-demo-typography.mp4'
+    width: '100%'
+    height: '100%'
+    
+
 tags: ["astro", "blogging", "learning in public"]
 
-# contentImgs: [
-#     "/src/assets/project-1/Editorial-Mockup_00.jpg",
-#     "/src/assets/project-1/Editorial-Mockup_01.jpg"    
-# ]
+contentImgs:
+  - url: 'src/assets/project-1/Editorial-Mockup_00.jpg'
+    alt: "Image description 1"
+    width: 600
+    height: 400
+  - url: 'src/assets/project-1/Editorial-Mockup_01.jpg'
+    alt: "Image description 2"
+    width: 600
+    height: 400
+
 ---
 
 import { Image } from 'astro:assets';

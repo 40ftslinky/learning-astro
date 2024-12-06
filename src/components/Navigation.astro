@@ -59,6 +59,12 @@ const textLinks: { label: string; href: string }[] = [
     z-index: -1;
 }
 
+#menu-content.expanded {
+	display: flex;
+	top: var(--header-height);
+	height: calc(100vh - var(--header-height));
+}
+
 
 
 .nav-links {
@@ -76,14 +82,23 @@ const textLinks: { label: string; href: string }[] = [
 	padding: 10px 0;
 	text-decoration: none;
 	/* font-size: 1.2rem; */
-	font-size: var(--text-md);
-	font-weight: bold;
-	text-transform: uppercase;
+	font-size: var(--text-xl);
+	font-weight: var(--font-weight-medium);
+	/* text-transform: uppercase; */
 }
 
 .nav-links a:hover,
 .nav-links a:focus {
-	background-color: #ff9776;
+	
+}
+
+.nav-links a.active {
+	font-weight: var(--font-weight-bold);
+}
+
+.nav-links a.active:hover,
+.nav-links a.active:focus {
+	
 }
 
 

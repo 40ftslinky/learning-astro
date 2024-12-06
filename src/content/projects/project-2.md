@@ -12,11 +12,10 @@ image:
 pubDate: 2022-07-08
 tags: ["astro", "blogging", "learning in public", "successes"]
 
-# contentImgs: [
-#     "/src/assets/project-1/Editorial-Mockup_00.jpg",
-#     "/src/assets/project-1/Editorial-Mockup_01.jpg"    
-# ]
+
 ---
+
+
 After a successful first week learning Astro, I decided to try some more. I wrote and imported a small component from memory!
 
 <!-- A remote image -->
@@ -37,7 +36,7 @@ After a successful first week learning Astro, I decided to try some more. I wrot
 
 <!-- An example of the `<Image />` component inside MD pages -->
 
-<Picture
-  src={frontmatter.src}
+<Image
+  src="/src/assets/project-1/Editorial-Mockup_00.jpg"
   alt={frontmatter.alt}
 />

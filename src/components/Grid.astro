@@ -1,12 +1,12 @@
 ---
 interface Props {
-	variant?: 'offset' | 'even' | 'small';
+	variant?: 'offset' | 'even' | 'small' | 'medium';
 }
 
 const { variant } = Astro.props;
 ---
 
-<ul class:list={['grid', { offset: variant === 'even', small: variant === 'small' }]}>
+<ul class:list={['grid', { offset: variant === 'even', small: variant === 'small', medium: variant === 'medium' }]}>
 	<slot />
 </ul>
 
@@ -15,14 +15,18 @@ const { variant } = Astro.props;
 		display: grid;
 		grid-template-columns: auto;
 		grid-auto-rows: 1fr;
-		gap: 1rem;
+		gap: 2rem;
 		list-style: none;
 		padding: 0;
+		margin-top: 4rem;
 	}
 
 	.grid.small {
-		grid-template-columns: 1fr 1fr;
-		gap: 1.5rem;
+		grid-template-columns: 1fr 1fr 1fr;
+		gap: 2rem;
+		/* display: flex;
+		flex-wrap: wrap;
+		justify-content: center; */
 	}
 
 	/* If last row contains only one item, make it span both columns. */
@@ -33,7 +37,7 @@ const { variant } = Astro.props;
 	@media (min-width: 50em) {
 		.grid {
 			grid-template-columns: 1fr 1fr;
-			gap: 1rem;
+			gap: 2rem;
 		}
 
 		.grid.offset {
@@ -72,11 +76,28 @@ const { variant } = Astro.props;
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: center;
-			gap: 2rem;
+			/* gap: 2rem; */
+			gap: 4vw;
 		}
 
 		.grid.small > :global(*) {
-			flex-basis: 20rem;
+			/* flex-basis: 20rem; */
+			flex-basis: 10rem;
+			max-width: 90vw;
+		}
+
+		.grid.medium {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 2rem;
+			/* gap: 2vw; */
+		}
+
+		.grid.medium > :global(*) {
+			/* flex-basis: 20rem; */
+			flex-basis: 20%;
+			max-width: 90vw;
 		}
 	}
 </style>

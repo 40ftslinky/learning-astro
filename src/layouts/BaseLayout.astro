@@ -1,15 +1,19 @@
 ---
 // import { AstroSeo } from '@astrolib/seo';
 
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 import { fade } from "astro:transitions";
 
-// import MainHead from '../components/MainHead.astro';
 
-import Seo from '../components/Seo.astro';
+// Components
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Button from "../components/Button.astro";
+// import MainHead from '../components/MainHead.astro';
+// import Seo from '../components/Seo.astro';
+// import Hero from "../components/Hero.astro";
 
+// styles
 import '../styles/global.css';
 import '../styles/navigation.css';
 import '../styles/typography.css';
@@ -24,9 +28,12 @@ interface Props {
   pageHead?: string | undefined;
   pageDesc?: string | undefined;
   pageContent?: string | undefined;
+  ctaText?: string | undefined;
+  ctaLink?: string | undefined;
+  
 }
 
-const { uniqueID, pageTitle, metaTitle, metaDescription, pageHead, pageDesc, pageContent } = Astro.props;
+const { uniqueID, pageTitle, metaTitle, metaDescription, pageHead, pageDesc, pageContent, ctaText, ctaLink } = Astro.props;
 
 ---
 <html lang="en">
@@ -51,16 +58,26 @@ const { uniqueID, pageTitle, metaTitle, metaDescription, pageHead, pageDesc, pag
     <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 
 
-    <ViewTransitions />
+    <ClientRouter fallback="swap"/>
+
   </head>
   <body id={uniqueID}>
+    <div class="noise"></div>
+    <div class="overlay_effect"></div>
     <Header />
     <div class="target" style="height:-1px; width:100vw"></div>
       <div class="main-content">
         <section class="hero">
           <h1 class="text-gradient" transition:animate={fade({ duration: '1s' })} >{pageHead}</h1>
-          <h2>{pageDesc}</h2>
-          <p>{pageContent}</p>
+          <div class="hero-content">
+            <h2>{pageDesc}</h2>
+            <p >{pageContent}</p>
+            <!-- conditionally render CTA -->
+            {ctaLink? 
+              <Button href={ ctaLink } class='primary'>{ ctaText }</Button>
+              : ' ' 
+            }
+          </div>
         </section>
       <!-- slot -->
         
@@ -69,8 +86,7 @@ const { uniqueID, pageTitle, metaTitle, metaDescription, pageHead, pageDesc, pag
       </div>
     <Footer />
     <script is:inline>
-      // This code is inlined in the head to make dark mode instant & blocking.
-      import "../scripts/scroll.js";
+      // This code is inlined in the head to make it instant & blocking.
 
     </script>
     
@@ -79,14 +95,19 @@ const { uniqueID, pageTitle, metaTitle, metaDescription, pageHead, pageDesc, pag
  
     <script >
       import "../scripts/menu.js";
-      // import "../scripts/scroll.js";
-    </script>
-
+      import "../scripts/scroll.js";
+    </script>    
 
   </body>
 </html>
 
 <style>
+
+  .scroll-down {
+    display: inline;
+    font-size: 1rem;
+    font-weight: 600;
+  }
 
 :root {
 		--accent: 124, 58, 237;
@@ -100,14 +121,42 @@ const { uniqueID, pageTitle, metaTitle, metaDescription, pageHead, pageDesc, pag
 
 .text-gradient {
 		background-image: var(--accent-gradient);
-    /* background-image: var(--gradient-accent); */
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 		background-size: 400%;
 		background-position: 0%;
+    padding-bottom: 2rem;
 }
 
+::-moz-selection.text-gradient,
+::selection.text-gradient { /* Code for Firefox */
+  color: white;
+  background: var(--selection-color);
+  background-image: unset;
+		-webkit-background-clip: unset;
+		-webkit-text-fill-color: unset;
+}
 
+.hero {
+    /* display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 80vh;
+    gap: 2vh; */
+    padding: var(--header-height) var(--sectionpadding) ;
+}
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    /* padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left; */
+}
 
 body {
   --bg-opacity: 1;

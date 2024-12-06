@@ -8,6 +8,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 // Component Imports
 // import CallToAction from '../components/CallToAction.astro';
 import Grid from '../components/Grid.astro';
+import ClientListing from '../components/ClientListing.astro';
 // import Hero from '../components/Hero.astro';
 // import Icon from '../components/Icon.astro';
 // import Pill from '../components/Pill.astro';
@@ -23,14 +24,24 @@ const uniqueID = "home";
 const pageTitle = "40ftSlinky - Creative Agency";
 const metaTitle = "meta title tbc";
 const metaDescription = "meta description tbc";
-const pageHead = "Get your business to where you need it to be.";
+const pageHead = "Transforming your brand to reach the next level.";
 const pageDesc = "40ftSlinky is a boutique creative agency delivering imaginative and effective brand & strategy with digital, print & motion solutions.";
-const pageContent = "Lorem Ipsum";
+// a boutique agency that thrives at the intersection of design, data, and technology. Together, we’re focused on transforming brands and culture — across the world.
+const pageContent = "";
+const ctaText = "Get in touch";
+const ctaLink = "/contact";
+
+// clients
+// const clients = []
+// const imagePath?: string | undefined;
+// const altText?: string | undefined;
+// const name?: string | undefined;
 
 // Content Fetching: List four most recent work projects
 const projects = (await getCollection('projects'))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 	.slice(0, 4);
+
 
 ---
 
@@ -42,24 +53,19 @@ const projects = (await getCollection('projects'))
 	pageHead={pageHead}
 	pageDesc={pageDesc}
 	pageContent={pageContent}
+	ctaText={ctaText}
+	ctaLink={ctaLink}
 >
 	<!-- <section>
 		<h2>40ftSlinky is a boutique creative agency delivering imaginative and effective brand & strategy with digital, print & motion solutions.</h2>
 		<p>Lorem Ipsum</p>
 	</section> -->
 
-	<section>
-		<ImageCard
-			imagePath="/src/assets/color-gray.jpg"
-			altText="A grey colour swatch"
-			name="Grey"
-			size="300x500"
-		/>
-	</section>
+	
 
 	<!-- storyblok -->
 	<!-- <StoryblokComponent blok={content} /> -->
-	<section>
+	<section class="portfolio">
 		<div class="gallery">
 			<Grid variant="offset">
 				{
@@ -72,4 +78,91 @@ const projects = (await getCollection('projects'))
 			</Grid>
 		</div>
 	</section>
+
+	<section class="clients">
+		<div class="section title">
+			<h2>Partners & Clients</h2>
+			<p>We are not confined to a particular sector or restricted by the size or scope of our clients. We enjoy working across industries, whether it is entertainment, luxury, web3 or e-commerce.</p>
+		</div>
+		<div class="gallery">
+			<Grid variant="small">
+				<ClientListing></ClientListing>
+			</Grid>
+		</div>
+	</section>
+
+	<section class="services">
+		<div class="section title">
+			<h2>Capabilities</h2>
+			<p>Our services are designed to help you achieve your goals. We work with you to create a strategy that will help you reach your target audience and grow your business.</p>
+		</div>
+		<div class="gallery">
+			<Grid variant="medium">
+				
+				<div class="card">
+					<h4>Brand strategy</h4>
+					<p>Lorem - brand strategy represents the core of your brand</p>
+				</div>
+				<div class="card">
+					<h4>Brand Identity</h4>
+					<p>Lorem - much more than just a logo and a font.</p>
+				</div>
+				<div class="card">
+					<h4>Strategy</h4>
+					<p>We help you identify, plan, and achieve your short, medium, and long term goals and company objectives.</p>
+				</div>
+				<div class="card">
+					<h4>Motion</h4>
+					<p>Using motion to enhance your brands and digital experiences and ensure you stand out in the crowded digital world of today.</p>
+				</div>
+				<div class="card">
+					<h4>Production</h4>
+					<p>From creative to production, post-production, and distribution, our team of experienced writers, directors, and producers work to ensure the best projects are executed and delivered. We collaborate with you to create (personalized) video messages for all sorts of platforms, including websites, social media, and YouTube.</p>
+				</div>
+				<div class="card">
+					<h4>Development</h4>
+					<p>We help you bring your ideas to life through immersive experiences and beautifully-designed interfaces. We empower your business with the latest technologies and tools to help you grow and succeed.</p>
+						Multi-disciplinary development team of designers, engineers, project managers, and strategists. We work with you to create a strategy that will help you reach your target audience and grow your business.
+					</p>
+				</div>
+				<div class="card">
+					<h4>Consultancy</h4>
+					<p>We help you identify, plan, and achieve your short, medium, and long term goals and company objectives.</p>
+				</div>
+				<div class="card">
+					<h4>Content</h4>
+					<p>We turn your low-fi designs into hi-fi prototypes that feel like the real thing, perfect for grasping demand.</p>
+				</div>
+				<div class="card">
+					<h4>Marketing</h4>
+					<p>We help you bring your ideas to life through immersive experiences and beautifully-designed interfaces.</p>
+				</div>
+				<div class="card">
+					<h4>AV</h4>
+					<p>Storytelling through motion, sound, and film. Motion, sound design, editing, and 3D intrigue, inform, and entertain.</p>
+				</div>
+			</Grid>
+		</div>
+	</section>
+	<section class="test">
+			<ImageCard
+				imagePath="/src/assets/color-gray.jpg"
+				altText="A grey colour swatch"
+				name="Grey"
+				size="300x500"
+			/>
+	</section>
 </BaseLayout>
+
+<style>
+	.clients {
+		display: flex;
+		flex-direction: row-offset);
+		gap: 5vw;
+	}
+	.clients .title {
+		width: 30vw;
+	}
+	.clients .gallery:last-of-type {
+		width: 65vw;
+	}

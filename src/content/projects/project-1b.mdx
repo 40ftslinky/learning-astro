@@ -11,51 +11,47 @@ image:
     alt: 'Purple.'
     width: '100%'
     height: '100%'
-
-tags: ["astro", "blogging"]
-
-# contentImgs: [
-#     {
-#         url: "/src/assets/project-1/Editorial-Mockup_00.jpg",
-#         alt: "image one",
-#         width: "600px",
-#         height: "200px" 
-#     },{
-#         url: "/src/assets/project-1/Editorial-Mockup_01.jpg",
-#         alt: "image two",
-#         width: "600px",
-#         height: "200px"  
-#     }
-# ]
-
-# contentImgs:
-#   - src: "/src/assets/project-1/Editorial-Mockup_00.jpg"
-#     alt: image one
-#     width: 600px
-#     height: 200px
-
-#   - src: /src/assets/project-1/Editorial-Mockup_01.jpg
-#     alt: image two
-#     width: 600px
-#     height: 200px
-    
-
-# contentImgs: "/src/assets/project-1/Editorial-Mockup_00.jpg"    
-
-
+video: 
+    url: '/video/studio-dumbar-demo-typography.mp4'
+    width: '100%'
+    height: '100%'
+        
+tags: ['astro', 'blogging']
 ---
+import { Image } from 'astro:assets';
+import editorial from '/src/assets/project-1/Editorial-Mockup_00.jpg';
+
+## My MDX Page
+
+
+Local image stored in the the same folder
+![Houston in the wild](./imgs/Editorial-Mockup_00.jpg)
+
+// Local image stored in src/assets/
+<Image src={editorial} alt="Editorial Mockup"/>
+<img src={editorial.src} alt="Editorial Mockup"/>
+![Editorial Mockup](/src/assets/project-1/Editorial-Mockup_00.jpg)
+
+
+// Image stored in public/images/
+<Image src="/images/Editorial-Mockup_00.jpg" alt="Editorial Mockup" width="600" height="300"/>
+<img src="/images/Editorial-Mockup_00.jpg" alt="Editorial Mockup" width="600" height="300"/>
+![Editorial Mockup](/images/Editorial-Mockup_00.jpg)
+
+// Remote image on another server
+<Image src="https://placebear.com/g/600/300"  alt="alt" width="600" height="300"/>
+<img src="https://placebear.com/g/600/300"  alt="alt" width="600" height="300"/>
+![Astro](https://placebear.com/g/600/300)
+
 
 <div class="gallery_title">
-### {frontmatter.head}
-
- Local image stored in src/assets/project-1
+## {frontmatter.head}
+Local image stored in src/assets/project-1 
 </div>
 
+
 <div class="gallery">
-    <div class="img_wrap" >![Alt Text](/src/assets/project-1/Editorial-Mockup_00.jpg)</div>
-    ##### Image text
-    <div class="img_wrap">![Alt Text](/src/assets/project-1/Editorial-Mockup_01.jpg)</div>
-    ##### Image text
+    test
 </div> 
 
 

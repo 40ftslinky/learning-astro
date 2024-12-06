@@ -1,0 +1,55 @@
+---
+
+import { fade } from "astro:transitions";
+
+interface Props {
+  
+  pageHead?: string | undefined;
+  pageDesc?: string | undefined;
+  pageContent?: string | undefined;
+  ctaText?: string | undefined;
+  ctaLink?: string | undefined;
+  
+}
+
+const { pageHead, pageDesc, pageContent } = Astro.props;
+
+---
+
+<div class="hero-content">
+    <h1 class="text-gradient" transition:animate={fade({ duration: '1s' })} >{pageHead}</h1>
+    <h2>{pageDesc}</h2>
+    <p transition:animate={fade({ duration: '1s', direction: 'Up' })}>{pageContent}</p>
+</div>
+
+<style>
+
+:root {
+		--accent: 124, 58, 237;
+		--accent-gradient: 
+      linear-gradient(
+        45deg, 
+        rgb(var(--accent)), 
+        #da62c4 30%, 
+        white 60%);
+}
+
+.text-gradient {
+		background-image: var(--accent-gradient);
+    /* background-image: var(--gradient-accent); */
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-size: 400%;
+		background-position: 0%;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 5vh;
+}
+
+</style>

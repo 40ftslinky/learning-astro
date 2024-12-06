@@ -28,9 +28,15 @@ const pageContent = "About page content tbc";
 			<h2>... About stuff</h2>		
 			
 
-			<p>Led by Jeremy Nicholson founder and primary creative 40ftSlinky is a multi-disciplinary agency dedicated to partnering with individuals and organisations to help develop progressive brands and create multi-channel experiences that deliver results.</p> 
+			<p>40ftSlinky is a multi-disciplinary agency dedicated to partnering with individuals and organisations to help develop progressive brands and create multi-channel experiences that deliver results.</p> 
 
 			<p>We assemble unique teams from a diverse pool of expert collaborators, and respond flexibly to each brief without the hassle of a large agency.</p> 
+
+			<p>Led by Jeremy Nicholson founder and primary creative 40ftSlinky <strong>blah blah blah..</strong>.</p>
+				
+			<div class="img_wrap">
+				<img class="portrait" src="/images/jez_portrait.webp" alt="40ftSlinky" />
+			</div>
 
 			<p>Jeremy has worked in Sydney, Melbourne and Canberra for more than 20 years across brand, digital product and print. He has experience in both private (agency land) and public (Australian Government departments and statutory bodies) sectors and serviced local and international clients developing brands, corporate identity, digital presence, applications, marketing materials and publications through his businesses and nom-de-plume (40ftSlinky, Blandmine and Bland Design).</p> 
 
@@ -78,6 +84,60 @@ const pageContent = "About page content tbc";
 
 		</div>
 
+		<div class="content">
+			<p>40ftSlinky is a design and development creative practice, led by Jeremy Nicholson. We make things, from beginning to end. We welcome any project to work with good people on interesting ideas, whether it be building brands or building digital ideas.</p>
+
+			<ul>
+				<li>Digital Services</li>
+				<li>Technology Strategy</li>
+				<li>E-Commerce</li>
+				<li>UX / UI Design</li>
+				<li>Product Design</li>
+				<li>Prototyping</li>
+				<li>Interaction & Motion</li>
+				<li>Web Applications</li>
+				<li>Systems Building</li>
+				<li>Creative Services</li>
+				<li>Brand Identity</li>
+				<li>Creative Direction</li>
+				<li>Strategy and Positioning</li>
+				<li>Narrative</li>
+				<li>Art Direction</li>
+				<li>Publication Design</li>
+				<li></li>
+				<li>(MorebyMore)</li>
+			</ul>
+		</div>
+
+		<div class="content">
+			<h2>... more stuff</h2>		
+			<h3>Who we are:</h3>
+			<ul>
+				<li class="checkmark">An accelerator to propel you from idea inception to long-term execution</li>
+				<li class="checkmark">An honest, thorough, and efficient partner</li>
+				<li class="checkmark">A change agent that can evolve how you create, deploy, and expand products</li>
+				<li class="checkmark">A force to ensure your bold visions are fueled by repeatable success</li>
+				<li class="checkmark">A stable, continuous team to see efforts through from start to finish</li>
+			</ul>
+			<h3>Who we’re not:</h3>
+			
+			<ul>
+				<li class="cross">A low-cost body shop full of order takers</li>
+				<li class="cross">A strategy firm pushing big ideas that can’t be built</li>
+				<li class="cross">A creative agency that’s only focused on margins and billable hours</li>
+				<li class="cross">A faceless firm primarily concerned with staffing</li>
+				<li class="cross">A consultancy that throws things “over the wall” to a revolving team of resources</li>
+			</ul>
+		</div>
+
+
+		<div class="content">
+			<h2>... example</h2>		
+			<p>
+				wkshps.com/
+			</p>
+		</div>
+
 		<div class="contact">
 			<!-- <Form /> -->
 		</div>
@@ -91,5 +151,41 @@ const pageContent = "About page content tbc";
 	  color: purple;
 	  font-size: 4rem;
 	}
-	
+.img_wrap {	
+		background-color: yellow;
+		display: flex;
+		width: max-content;
+		height: max-content;
+		margin-top: 2rem;
+		margin-bottom: 2rem;
+	}
+	.portrait {
+		width: 100%;
+		max-width: 300px;
+		background-blend-mode: luminosity;
+		filter: grayscale(1); 
+	}
+	.checkmark {
+		list-style-type: none;
+		background-image: url('/images/checkmark.svg');
+		background-repeat: no-repeat;
+		background-position: 0 0.2em;
+		padding-left: 1.5em;
+	}
+	.cross {
+		list-style-type: none;
+		/* background-image: url('/images/cross.svg'); */
+		/* background-image: url("data:image/svg+xml,%3Csvg height='200px' width='200px' version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 511.999 511.999' xml:space='preserve' fill='%23000000'%3E%3Cg id='SVGRepo_bgCarrier' stroke-width='0'%3E%3C/g%3E%3Cg id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'%3E%3C/g%3E%3Cg id='SVGRepo_iconCarrier'%3E%3Cpath style='fill:%23dedede;' d='M384.955,256l120.28-120.28c9.019-9.019,9.019-23.642,0-32.66L408.94,6.765 c-9.019-9.019-23.642-9.019-32.66,0l-120.28,120.28L135.718,6.765c-9.019-9.019-23.642-9.019-32.66,0L6.764,103.058 c-9.019,9.019-9.019,23.642,0,32.66l120.28,120.28L6.764,376.28c-9.019,9.019-9.019,23.642,0,32.66l96.295,96.294 c9.019,9.019,23.642,9.019,32.66,0l120.28-120.28l120.28,120.28c9.019,9.019,23.642,9.019,32.66,0l96.295-96.294 c9.019-9.019,9.019-23.642,0-32.66L384.955,256z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E"); */
+		background-repeat: no-repeat;
+		background-position: 0 0.2em;
+		padding-left: 1.5em;
+	}
+	.cross::marker {
+		position: absolute;
+		content: '';
+		width: 1em;
+		height: 1em;
+		content: url("data:image/svg+xml,%3Csvg height='200px' width='200px' version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 511.999 511.999' xml:space='preserve' fill='%23000000'%3E%3Cg id='SVGRepo_bgCarrier' stroke-width='0'%3E%3C/g%3E%3Cg id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'%3E%3C/g%3E%3Cg id='SVGRepo_iconCarrier'%3E%3Cpath style='fill:%23dedede;' d='M384.955,256l120.28-120.28c9.019-9.019,9.019-23.642,0-32.66L408.94,6.765 c-9.019-9.019-23.642-9.019-32.66,0l-120.28,120.28L135.718,6.765c-9.019-9.019-23.642-9.019-32.66,0L6.764,103.058 c-9.019,9.019-9.019,23.642,0,32.66l120.28,120.28L6.764,376.28c-9.019,9.019-9.019,23.642,0,32.66l96.295,96.294 c9.019,9.019,23.642,9.019,32.66,0l120.28-120.28l120.28,120.28c9.019,9.019,23.642,9.019,32.66,0l96.295-96.294 c9.019-9.019,9.019-23.642,0-32.66L384.955,256z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+
+	}
 </style>

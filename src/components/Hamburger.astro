@@ -1,5 +1,5 @@
 ---
-import Icon, { Props as IconProps } from './Icon.astro';
+// import Icon, { Props as IconProps } from './Icon.astro';
 
 ---
 <div class="hamburger">
@@ -8,7 +8,7 @@ import Icon, { Props as IconProps } from './Icon.astro';
     <span class="line"></span>
 </div>
 
-<Icon icon="list" class="hamburger"/>
+<!-- <Icon icon="list" class="hamburger"/> -->
 
 <style>
 
@@ -20,10 +20,11 @@ import Icon, { Props as IconProps } from './Icon.astro';
   
   .hamburger .line {
     display: block;
-    width: 40px;
-    height: 5px;
-    margin-bottom: 10px;
-    background-color: #ff9776;
+    width: 3rem;
+    height: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: .125rem;
+    background-color: var(--accent-regular);
   }
   
     .hamburger {

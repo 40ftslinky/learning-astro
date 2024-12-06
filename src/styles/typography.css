@@ -35,8 +35,8 @@
   --font-weight-h4: var(--font-weight-bold);
   --font-weight-h5: var(--font-weight-bold);
   --font-weight-h6: var(--font-weight-medium);
-  --letter-spacing-h1: -0.05em;
-  --letter-spacing-h2: -0.05em;
+  --letter-spacing-h1: -0.055em;
+  --letter-spacing-h2: -0.025em;
   --letter-spacing-h3: -0.035em;
   --letter-spacing-h4: -0.02em;
   --letter-spacing-h5: -0.02em;
@@ -79,6 +79,8 @@ html {
   font-feature-settings: normal;
   font-variant-ligatures: normal
 }
+
+
 
 body {
   font-family: var(--font-family);
@@ -160,6 +162,7 @@ sup {
   letter-spacing: var(--letter-spacing-h6);
   line-height: var(--line-height-h6)
 }
+
 
 /*  */
 @media only screen and (min-width: 1920px) {
@@ -281,8 +284,8 @@ sup {
 --time-delay-1000: 1s;
 --time-delay-initial: 0.5s;
 --time-delay-none: 0s;
---font-family-sctogroteska: SctoGroteskA;
---font-family-body: "SctoGroteskA", sans-serif;
+--font-family-grotesk: Schibsted Grotesk;
+--font-family-body: "Schibsted Grotesk", sans-serif;
 --font-weight-regular: 300;
 --font-weight-medium: 400;
 --font-weight-bold: 700;
@@ -343,6 +346,22 @@ sup {
     --ff_quaternary: 'Merriweather', serif;
     --ff_code: 'Fira Code', monospace;
     --ff_mono: 'Space Mono', monospace;
+}
+
+/* category */
+.text-block_text-block__label {
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+}
+.case-study-overview_content p {
+  font-size: 2.2rem;
+  font-weight: var(--font-weight-regular);
+  line-height: 1.45;
+}
+.case-study-overview_content h5+p, 
+.case-study-overview_content h5+ul {
+  margin-top: 2.5rem;
 }
 
 /* 

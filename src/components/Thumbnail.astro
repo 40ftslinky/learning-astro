@@ -1,0 +1,23 @@
+---
+// Thumbnail.astro
+
+const { kind } = Astro.props;
+//ensure kind is 'other' in fallback case
+---
+
+{(kind === "a") &&
+      <div>a</div>
+}
+{(kind === "b") &&
+      <div>b</div>    
+}
+{(kind === "c") &&
+      <div>c</div>
+}
+{(kind === "other") &&
+      console.log("unknown kind.")
+}
+
+<!-- // the MDX file -->
+
+<!-- <Thumbnail kind="a" /> -->

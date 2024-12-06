@@ -1,0 +1,48 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+interface Props {
+   imagePath?: string | undefined;
+   altText?: string | undefined;
+   name?: string | undefined;
+   size?: number | undefined;
+}
+
+const { imagePath, altText, name } = Astro.props;
+
+// const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/clients/*.{jpeg,jpg,png,gif,svg}');
+
+// const images = await Astro.glob("/src/assets/img/salon/*").then(files => {
+//   return files.map(file => file.default);
+// });
+
+// if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: "src/assets/clients/*.{jpeg,jpg,png,gif,svg}"`);
+
+
+const images = await Astro.glob(
+ "../assets/images/*.{jpg,JPG,jpeg,png,PNG,webp,svg,SVG,gif,GIF}"
+).then((files) => {
+ return files.map((file) => file.default); // Map each file to its default export (the src).
+});
+---
+
+
+
+<div class="client_icon">
+    <h2 hidden>{name}</h2>
+
+    <!-- <Image src={images[imagePath]()} alt={altText} width={100} /> -->
+
+    {
+        images.map((img) => (
+            <Image
+                src={imagePath}
+                alt={altText}
+                width="100px"
+                height="100%"
+        />
+        ))
+    }
+</div>
+

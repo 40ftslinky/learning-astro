@@ -24,7 +24,7 @@ const pageContent = "Projects page content tbc";
 // Content Fetching: List four most recent work projects
 const projects = (await getCollection('projects'))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-	.slice(0, 4);
+	.slice(0, 10);
 
 ---
 

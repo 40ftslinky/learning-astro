@@ -3,7 +3,9 @@
   --nav-height: 5rem;    
 
   --spacing: 0.25rem;
-  --radius: 0.25rem;
+  --radius: 1.25rem;
+  --radius-sm: 0.75rem;
+  --radius-xsm: 0.5rem;
   --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   --max-width: 1170px;
@@ -11,6 +13,16 @@
   --transition: all 0.3s linear;
   --link: #ff9776;
   --link-hover: #ff9776;
+
+  /* breakpoint */
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-xxl: 1440px;
+  --breakpoint-3xl: 1600px;
+  --breakpoint-full: 1920px;
 
   /* modals */
   
@@ -38,10 +50,36 @@
   --socialsizew: 30px;
   --socialsizeh: 30px;
 
-  /* spacing */
+  /* mobile spacing */
   --bodypadding:2rem;
-  --sectionpadding:5vw;
+  --sectionpadding:5.4vw;
 }
+
+@media only screen and (min-width: 1280px) {
+  :root {
+    /* spacing */
+    --bodypadding:2rem;
+    --sectionpadding:4rem;
+  }
+}
+
+
+:root {
+  --grid-width: var(--gbl-size-grid-width);
+  --grid-height: var(--gbl-size-grid-height);
+  --grid-padding: var(--gbl-size-grid-padding-mobile);
+  --grid-column-count: var(--gbl-layout-grid-columns-small);
+  --grid-gutter: var(--gbl-size-grid-gutter-mobile)
+}
+
+@media only screen and (min-width: 1280px) {
+  :root {
+      --grid-padding:var(--gbl-size-grid-padding-desktop);
+      --grid-column-count: var(--gbl-layout-grid-columns-large);
+      --grid-gutter: var(--gbl-size-grid-gutter-desktop)
+  }
+}
+
 
 /* Global variables */
 :root {
@@ -59,7 +97,7 @@ body {
 html {
     background-color: var(--gray-900) /* #f1f5f9 */;
     font-family: sans-serif;
-  }
+}
 html.dark {
     background-color: #0d0950;
     color: #fff;
@@ -78,6 +116,20 @@ body {
 *::before {
   box-sizing: border-box;
   margin: 0;
+}
+
+:root {
+  --selection-color: rgba(var(--brand-green-rgb), 0.3);
+}
+
+::-moz-selection { /* Code for Firefox */
+  color: white;
+  background: var(--selection-color);
+}
+
+::selection {
+  color: white;
+  background: var(--selection-color);
 }
 
 img {
@@ -130,9 +182,27 @@ body {
     line-height: 1.5;
 }
 
-img {
+.services .card {
+    background: var(--gray-800);
+    border-radius: var(--radius);
+    box-shadow: var(--light-shadow);
+    transition: var(--theme-transition);
+    padding: 2rem;
+}
+@media (min-width: 50em) {
+  .services .grid.small >* {
+    flex-basis: 23%;
+  }
+}
+
+.services .card h4 {
+    margin-top: 0;
+}
+
+.card img,
+p img {
     /* max-width: calc(100vw - 4rem); */
-    max-width: calc(100vw - 2*var(--bodypadding));
+    max-width: calc(100vw - 2*var(--sectionpadding));
 }
   
 * {
@@ -148,17 +218,15 @@ img {
 }
 
 .main-content {
-  background: rgba(127, 59, 236, 0.1);
-  transition: var(--transition);
+  
 }
-.active ~ .main-content {
-  background: rgba(127, 59, 236, 0);
-  transition: var(--transition);
-}
+
+
 
 section {
     /* padding: 2rem; */
-    padding: var(--sectionpadding) var(--bodypadding) 
+    /* padding: var(--sectionpadding) var(--bodypadding)  */
+    padding: var(--sectionpadding);
 }
 section.hero {
     min-height: 60vh;
@@ -166,4 +234,60 @@ section.hero {
 
 .gallery {
     grid-area: gallery;
+}
+
+/*  */
+
+
+
+.noise {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none
+}
+
+.noise:after {
+  position: absolute;
+  top: -10rem;
+  left: -10rem;
+  width: calc(100% + 20rem);
+  height: calc(100% + 20rem);
+  animation: noise 1s steps(2) infinite;
+  background-image: url(../assets/noise.png);
+  background-position: 50%;
+  content: "";
+  will-change: transform
+}
+
+@keyframes noise {
+  0% { transform: translate3d(0,9rem,0) }
+  10% { transform: translate3d(-1rem,-4rem,0) }
+  20% { transform: translate3d(-8rem,2rem,0) }
+  30% { transform: translate3d(9rem,-9rem,0)}
+  40% { transform: translate3d(-2rem,7rem,0) }
+  50% { transform: translate3d(-9rem,-4rem,0) }
+  60% { transform: translate3d(2rem,6rem,0) }
+  70% { transform: translate3d(7rem,-8rem,0) }
+  80% { transform: translate3d(-9rem,1rem,0) }
+  90% { transform: translate3d(6rem,-5rem,0) }
+  to { transform: translate3d(-7rem,0,0) }
+}
+
+/* grabient */
+
+.gradient {
+  background-color: #4158D0;
+  background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+}
+
+/* carousel */
+
+.carousel_container {
+  position: relative;
+  left: calc(var(--grid-padding)* -1);
+  width: calc(100% + var(--grid-padding)* 2);
+  cursor: none;
 }

@@ -5,6 +5,11 @@
     --primary-1: #8533ff;
     --primary-2: #9675f7;
 
+    --brand-green: #50E3C2;
+    --brand-green-rgb: 80, 227, 194;
+    --brand-purple: #9747FF;
+    --accent-purple: #7C3AED;
+
     --black: #111111;
 
     --mono-1: #1f1f1f;
@@ -39,7 +44,7 @@
     --accent-dark: #1c0056;
     --accent-overlay: hsla(280, 89%, 67%, 0.33);
     --accent-subtle-overlay: var(--accent-overlay);
-    --accent-text-over: var(--gray-999);
+    --accent-text-over: var(--accent-dark);
 
     --light-rgb: 245, 245, 245;
     --dark-rgb: 9, 11, 17;
@@ -63,7 +68,7 @@
     );
     --gradient-accent-orange: linear-gradient(
         150deg,
-        #ca7879,
+        #50E3C2,
         var(--accent-regular),
         var(--accent-dark)
     );
