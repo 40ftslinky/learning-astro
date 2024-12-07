@@ -19,9 +19,10 @@ export default defineConfig({
   ],
   site: 'https://40ftslinky.github.io',
   base: '',
-  // buildOptions: ({
-  //   site: 'https://40ftslinky.github.io',
-  //   base: '/learning-astro',
-  // }),
+//    buildOptions: ({
+//     site: 'https://40ftslinky.github.io',
+//     base: '/learning-astro',
+//     trailingSlash: always,
+//  }),
 });
 
